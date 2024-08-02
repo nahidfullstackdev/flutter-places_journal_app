@@ -44,8 +44,7 @@ class UserPlacesNotifier extends StateNotifier<List<Place>> {
                 longitude: row['lng'] as double,
                 address: row['address'] as String),
           ),
-        )
-        .toList();
+        ).toList();
 
     state = places;
   }
