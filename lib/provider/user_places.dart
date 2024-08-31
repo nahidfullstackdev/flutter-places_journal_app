@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:places/models/place.dart';
 
 import 'package:path_provider/path_provider.dart' as syspath;
@@ -44,7 +45,8 @@ class UserPlacesNotifier extends StateNotifier<List<Place>> {
                 longitude: row['lng'] as double,
                 address: row['address'] as String),
           ),
-        ).toList();
+        )
+        .toList();
 
     state = places;
   }
