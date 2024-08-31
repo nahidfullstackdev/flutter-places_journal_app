@@ -25,10 +25,11 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   UserLocation? _pickedLocation;
   var _isGettingLocation = false;
+  final String API_KEY = '';
 
   void _saveLocation(double latitude, double longitude) async {
     final url = Uri.parse(
-        'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=AIzaSyCsfZHwy2K1GVS-lRi3dT-VB7vvY46iXYg');
+        'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$API_KEY');
 
     final response = await http.get(url);
     final resdata = json.decode(response.body);
@@ -52,7 +53,7 @@ class _LocationInputState extends State<LocationInput> {
     final lat = _pickedLocation!.latitude;
     final lng = _pickedLocation!.longitude;
 
-    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng=&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C$lat,$lng&key=AIzaSyCsfZHwy2K1GVS-lRi3dT-VB7vvY46iXYg';
+    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng=&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C$lat,$lng&key=$API_KEY';
   }
 
   void _getCurrentLocation() async {
